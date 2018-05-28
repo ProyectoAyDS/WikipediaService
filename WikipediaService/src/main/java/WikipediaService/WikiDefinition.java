@@ -1,0 +1,1 @@
+package WikipediaService;public class WikiDefinition {    private String term;    private String meaning;    public WikiDefinition(String term, String meaning){        this.term = term;        this.meaning = meaning;    }    public String getTerm(){        return term;    }    public String getMeaning() {        return meaning;    }}

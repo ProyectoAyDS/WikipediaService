@@ -1,0 +1,1 @@
+package WikipediaService;public interface APIConnection {    WikiDefinition getDefinition(String string) throws Exception;}

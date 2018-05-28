@@ -1,0 +1,1 @@
+package WikipediaService;interface FormatHelper {    String formatToString(String jsonTerm);}
