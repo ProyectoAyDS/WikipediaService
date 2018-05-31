@@ -1,24 +1,30 @@
 # Wikipedia Service
 
-Librería para utilizar la API de Wikipedia. 
+Librería que obtiene el significado de un término en específico, a partir de la información almacenada en la Wikipedia. 
 
 ## Primeros pasos
 
-Las siguientes instrucciones permitirán obtener una copia del repositorio funcionando en la aplicación de quien lo requiera. 
+Las siguientes instrucciones permitirán obtener una copia del repositorio en cualquier aplicacion particular.
 
 ### Prerequisitos
 
 Para utilizar la libreria es necesario clonar el repositorio. Es posible realizarlo mediante el siguiente comando git:
 
 ```
-git submodule add <URL del repositorio> <Carpeta de destino>
+git submodule add <URL del repositorio> <path_carpeta_destino>
 ```
 
-Si la librería ya se encuentra en uso, para obtener la última versión del módulo se deberá realizar el siguiente comando git: 
+Si la librería ya se encuentra en uso, para obtener la última versión del módulo se deberá realizar los siguientes comandos git: 
 
 ```
-git submodule foreach git pull origin master
-git submodule update --init
+//Cambiar al directorio del submodulo 
+cd submodule_dir 
+
+//Chequear la rama deseada 
+git checkout master 
+
+//Actualizar
+git pull
 ```
 
 ### Modo de uso
@@ -29,12 +35,12 @@ En un principio, para establecer la conexión con la aplicación de Wikipedia se
 APIConnection apiConnection = WikipediaServiceModule.getInstance().getAPIConnection(); 
 ```
 
-Para obtener la definición de un término en particular se debe llamar a la función 'getDefinition(<termino_a_buscar>)'. Esta función lanza una excepción del tipo Exception cuando hubo un error al conectarse con la Wikipedia. A continuación se muestra un ejemplo de como se utilizaría: 
+Para obtener la definición de un término en particular se debe llamar a la función 'getDefinition(String <termino_a_buscar>)'. Esta función lanza una excepción del tipo Exception cuando hubo un error al conectarse con la Wikipedia. A continuación se muestra un ejemplo de como se utilizaría: 
 
 ```
  try{
 	[...]
-	WikiDefinition def = apiConnection.getDefinition(term);
+	WikiDefinition def = apiConnection.getDefinition("hola");
 	[...]
  }
  catch (Exception e) {
@@ -44,11 +50,11 @@ Para obtener la definición de un término en particular se debe llamar a la fun
  }
 ```
 
-Las funciones que se pueden realizar con un objeto WikiDefinition son las siguientes: 
+Las operaciones que se pueden realizar con un objeto WikiDefinition son las siguientes: 
 
-* String getTerm(): Se obtiene el término que el usuario buscó. 
+* String getTerm(): Retorna el término que el usuario buscó. 
 
-* String getMeaning(): Se obtiene la definición del término buscado. 
+* String getMeaning(): Retorna la definición del término buscado. 
 	
 ## Autores
 
