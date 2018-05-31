@@ -4,7 +4,7 @@ Librería para utilizar la API de Wikipedia.
 
 ## Primeros pasos
 
-Las siguientes instrucciones permitiran obtener una copia del proyecto funcionando en su maquina.
+Las siguientes instrucciones permitirán obtener una copia del repositorio funcionando en la aplicación de quien lo requiera. 
 
 ### Prerequisitos
 
@@ -14,55 +14,49 @@ Para utilizar la libreria es necesario clonar el repositorio. Es posible realiza
 git submodule add <URL del repositorio> <Carpeta de destino>
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Si la librería ya se encuentra en uso, para obtener la última versión del módulo se deberá realizar el siguiente comando git: 
 
 ```
-Give the example
+git submodule foreach git pull origin master
+git submodule update --init
 ```
 
-And repeat
+### Modo de uso
+
+En un principio, para establecer la conexión con la aplicación de Wikipedia se debe realizar la siguiente instrucción: 
 
 ```
-until finished
+APIConnection apiConnection = WikipediaServiceModule.getInstance().getAPIConnection(); 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Para obtener la definición de un término en particular se debe llamar a la función 'getDefinition(<termino_a_buscar>)'. Esta función lanza una excepción del tipo Exception cuando hubo un error al conectarse con la Wikipedia. A continuación se muestra un ejemplo de como se utilizaría: 
 
 ```
-Give an example
+ try{
+	[...]
+	WikiDefinition def = apiConnection.getDefinition(term);
+	[...]
+ }
+ catch (Exception e) {
+	[...] 
+	e.getMessage();
+	[...]
+ }
 ```
 
-### And coding style tests
+Las funciones que se pueden realizar con un objeto WikiDefinition son las siguientes: 
 
-Explain what these tests test and why
+* String getTerm(): Se obtiene el término que el usuario buscó. 
 
-```
-Give an example
-```
+* String getMeaning(): Se obtiene la definición del término buscado. 
+	
+## Autores
 
-## Deployment
+* **Fritz Jonathan** [Github](https://github.com/jonifritz)
 
-Add additional notes about how to deploy this on a live system
+* **Panzone Caterina** [Github](https://github.com/Caterina-Panzone)
 
-## Authors
-
-* **Fritz Jonathan** [Github](https://github.com/PurpleBooth)
-
-* **Panzone Caterina** [Github](https://github.com/PurpleBooth)
-
-* **Sly Agustin** [Github](https://github.com/PurpleBooth)
+* **Sly Agustin** [Github](https://github.com/Sly-Agustin)
 
 
 
